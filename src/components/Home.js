@@ -5,7 +5,6 @@ import url from "../ServerUrl";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
-import { data } from "jquery";
 
 function Task({ task, taskIndex, completeTask, deleteTask, dataIndex }) {
   return (
@@ -55,6 +54,8 @@ function Heading({ today, head }) {
 
 function TaskColumn({ data, deleteTask, addTask, completeTask, dataIndex }) {
   const currdate = new Date();
+
+  // eslint-disable-next-line
   const today = currdate.getDate() == data.head.date;
 
   const [addtask, setAddtask] = useState(false);
@@ -86,12 +87,13 @@ function TaskColumn({ data, deleteTask, addTask, completeTask, dataIndex }) {
             addTask(e.target.value, dataIndex);
             setAddtask(false);
           }}
-                  onKeyDown={(e) => {
-                      if (e.key == 'Enter') {
-                          addTask(e.target.value, dataIndex);
-                          setAddtask(false);
-                      }
-                  }}
+          onKeyDown={(e) => {
+            // eslint-disable-next-line
+            if (e.key == "Enter") {
+              addTask(e.target.value, dataIndex);
+              setAddtask(false);
+            }
+          }}
           className="mx-auto col-11 mb-5"
         />
       ) : null}
